@@ -273,6 +273,8 @@ vdaisley@topology:/tmp$ chmod +x procmon.sh
 ### I searched to see if it was possible to execute commands using **gnuplot**.
 ![gnuplot command exec](images/gnuplot_command.png)
 
+![system command](images/system.png)
+
 ### Since **gnuplot** executes files in `/opt/gnuplot` with a `.plt` extension and can run commands using the `system` function, my idea is to create a `.plt` file in `/opt/gnuplot` that grants the **setuid (4755) permission** to `/bin/bash`.
 
 ```bash
