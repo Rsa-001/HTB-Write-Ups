@@ -129,7 +129,7 @@ Requests/sec.: 46.53667
 ![sub stats](images/stats.png)
 
 ### Returning to the `LaTeX` subdomain to test for **LaTeX Injection** vulnerabilities.
-
+![latex page](images/Latex_page.png)
 ## Exploiting LaTeX Injection
 
 - Searching for payload examples in **PayloadAllTheThings**:
@@ -141,7 +141,7 @@ Requests/sec.: 46.53667
 ```latex
 \input{/etc/passwd}
 ```
-
+![first payload](images/fail_payload.png)
 
 
 
@@ -149,49 +149,48 @@ Requests/sec.: 46.53667
 ```latex
 \lstinputlisting{/etc/passwd}
 ```
-
+![second payload](images/second_payload)
 
 
 ### Issue Debugging
 - Reading the description I found something relevant:
-
+![inline math](images/inline_math.png)
 ### So I did a search on what that means:
-
+![inline math search](images/research_math.png)
 ### Further reading I found this:
  [Overleaf - Mathematical Expressions](https://www.overleaf.com/learn/latex/Mathematical_expressions)
-
+![full search](images/inline_math_mode.png)
 ## Tried the payload " \$\lstinputlisting{/etc/passwd}\$ " for reading files,  adding the "$" delimiters, and it **worked**.
-
+![good payload](images/good_payload.png)
 
 -----
 
 ## User Enumeration
 
 ### Searching for Users with a bash I found the user: vdaisley
-
+![user info](images/user.png)
 
 ## I tried to search the **ssh** directory but it was not possible to find it, I also searched for the .bashrc, I found it but there was no relevant information.
-
+![bashrc](images/bashrc.png)
 ## Before proceeding with system enumeration, I check whether I am inside the machine or inside a container using the command → `/proc/net/fib_trie`.
-
+![system ip](images/ip.png)
 
 ### And indeed, I am inside the victim machine and not a container.
 
 
 ### - Since I know the website is running on Apache, I search for the service's configuration files to see if I can find anything…
 - `/etc/apache2/sites-available/000-default.conf`
-
+![server configuration](images/config.png)
 
 ### After gathering information about the website and its subdomains, I now know that the website is located in `/var/www/`.
 
 ### Since I already know that the `/dev` subdomain requires credentials, those credentials must be stored somewhere. So, I decide to enumerate the `/var/www/dev` directory, as authentication details are usually stored in a `.htaccess` file. In this case, it would be `/var/www/dev/.htaccess`.
 
 ### Finding this.
-
+![dev directory](images/passwd)
 
 ### Seeing what is in the newly found path, I found this.
-
-
+![passwd found](images/hash.png)
 
 ### The password of the previously found user, but the password is hashed, so it needs to be cracked.
 
