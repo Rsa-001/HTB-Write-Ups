@@ -60,10 +60,10 @@ Nmap done: 1 IP address (1 host up) scanned in 7.82 seconds
 ### Codename Detection
 
 ### Ubuntu (Port 22)
-
+![Ubuntu 22](images/ubuntu_22.png)
 
 ### Ubuntu (Port 80)
-
+![Ubuntu 80](images/ubuntu_80.png)
 
 ### Before continuing with the web page that tells me the scan I did, I added to /etc/hosts the default domain that exists on each machine ---> (machine_name.htb), to see if I can see something different with whatweb.
 
