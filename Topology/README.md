@@ -81,10 +81,11 @@ http://topology.htb [200 OK] Apache[2.4.41], Country[RESERVED][ZZ], Email[lklein
 ------------
 
 ## Web Page
-
+![webpage](images/webpage.png)
 
 ### LaTeX Subdomain Found
-
+![subdomain in page](images/subdomain_latex.png)
+![full subdomain](images/subdomain.png)
 
 ### I add the found subdomain to /etc/hosts
 
@@ -118,14 +119,14 @@ Requests/sec.: 46.53667
 
 
 ### Add the found subdomains to /etc/hosts
-   `dev`
-  `stats`
+   `dev` --> http://dev.topology.htb
+  `stats` --> http://stats.topology.htb
 ### dev
-
-- No interesting results in `dev` and because I don't have credentials available.
+![sub dev](images/dev.png)
+- No interesting results in `dev` because I don't have credentials available.
 
 ### stats
-
+![sub stats](images/stats.png)
 
 ### Returning to the `LaTeX` subdomain to test for **LaTeX Injection** vulnerabilities.
 
