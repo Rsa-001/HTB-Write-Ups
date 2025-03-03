@@ -187,7 +187,7 @@ Requests/sec.: 46.53667
 ### Since I already know that the `/dev` subdomain requires credentials, those credentials must be stored somewhere. So, I decide to enumerate the `/var/www/dev` directory, as authentication details are usually stored in a `.htaccess` file. In this case, it would be `/var/www/dev/.htaccess`.
 
 ### Finding this.
-![dev directory](images/passwd)
+![dev directory](images/passwd.png)
 
 ### Seeing what is in the newly found path, I found this.
 ![passwd found](images/hash.png)
