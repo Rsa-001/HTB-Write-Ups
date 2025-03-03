@@ -149,7 +149,7 @@ Requests/sec.: 46.53667
 ```latex
 \lstinputlisting{/etc/passwd}
 ```
-![second payload](images/second_payload)
+![second payload](images/second_payload.png)
 
 
 ### Issue Debugging
@@ -196,7 +196,7 @@ Requests/sec.: 46.53667
 
 
 ### Password cracked usign hashcat
-
+![hash password](images/crack_hash.png)
 
 
 ### Now, I try the obtained credentials on `/dev` to see if they work:
@@ -204,7 +204,7 @@ Requests/sec.: 46.53667
 **Username:** `vdaisley`  
 **Password:** `calculus20`
 
-
+![use credential on dev](images/dev_access.png)
 
 ### And I gain access. Since the credentials worked, I test if they are reused and try to log in via **SSH**.
 
@@ -244,7 +244,7 @@ Release:        20.04
 Codename:       focal
 ```
 
-### If I don’t find anything manually, I can enumerate running processes at time intervals using the following **Bash script**. I give it execution permissions in the `/tmp` directory and run it, waiting for some output.
+### I don’t find anything manually, I can enumerate running processes at time intervals using the following **Bash script**. I give it execution permissions in the `/tmp` directory and run it, waiting for some output.
 
 ```sh 
 vdaisley@topology:/tmp$ cat procmon.sh
@@ -264,14 +264,14 @@ done
 vdaisley@topology:/tmp$ chmod +x procmon.sh
 ```
 
-### When executing the command, these two processes caught my attention.
-
+### When executing the script, these two processes caught my attention.
+![process](images/procmon.png)
 
 ### I didn’t know what **gnuplot** was, so I looked it up.
-
+![gnuplot research](images/gnuplot.png)
 
 ### I searched to see if it was possible to execute commands using **gnuplot**.
-
+![gnuplot command exec](images/gnuplot_command.png)
 
 ### Since **gnuplot** executes files in `/opt/gnuplot` with a `.plt` extension and can run commands using the `system` function, my idea is to create a `.plt` file in `/opt/gnuplot` that grants the **setuid (4755) permission** to `/bin/bash`.
 
@@ -280,9 +280,9 @@ echo 'system("chmod 4755 /bin/bash")' > /opt/gnuplot/root_shell.plt
 ```
 
 ### And it executes!
-
+![setuid 4755](images/4755.png)
 ### Now, I just need to launch a **bash shell** with the following command to escalate privileges and become **root**:
-
+![root](images/root.png)
 
 
 ---
